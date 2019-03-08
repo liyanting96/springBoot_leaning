@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: test
+
+server:
+  port: 8080
+
+
+
+mq-config:
+  OWNER: user1
+  PREFIX: DEV_
+  HEADERS: {cookie: SESSION=c091c15f-6031-4f08-91ec-ece27bc82654}

@@ -1,0 +1,12 @@
+
+# https://blog.csdn.net/Jae_Wang/article/details/80728859
+mq-config:
+  API_ADDR: ${API_ADDR:http://192.168.0.48:5200}
+  HOST_GROUP_ID: 8
+  max_modify_count_per_day: 100
+  file: F:\\springboot3\\log\\demo2.log
+  SERVICE_NAME: "rocketmq.sunlands_mq.broker"
+
+
+logging:
+  file: F:\\springboot3\\log\\demo2.log

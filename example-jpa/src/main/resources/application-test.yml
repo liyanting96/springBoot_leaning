@@ -1,0 +1,20 @@
+spring:
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    #基本属性
+    url: jdbc:mysql://47.99.236.94:3306/springBoot?useUnicode=true&characterEncoding=utf-8
+    username: itoffice
+    password: itoffice
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug

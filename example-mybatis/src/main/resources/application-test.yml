@@ -1,0 +1,18 @@
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.example.mybatis.entity
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    #基本属性
+    url: jdbc:mysql://47.99.236.94:3306/test?useUnicode=true&characterEncoding=utf-8
+    username: itoffice
+    password: itoffice
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
