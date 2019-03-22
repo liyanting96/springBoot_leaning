@@ -1,12 +1,12 @@
-package com.example.jpa.entity;
+package com.example.jpa.Entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "t_Student")
-public class Student {
+public class Student  {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
+    @GeneratedValue
     private Integer id;
     @Column(name = "name")
     private String name;

@@ -83,6 +83,13 @@ public class StudentController {
 
     }
 
+    @RequestMapping(value = "/insertStudent", method = RequestMethod.POST)
+    @ResponseBody
+    public void insertStudent(String name, String age){
+         studentService.insertStudent(name, age);
+
+    }
+
 
 
 }

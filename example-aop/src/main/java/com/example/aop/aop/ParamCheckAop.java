@@ -1,5 +1,6 @@
 package com.example.aop.aop;
 
+import com.alibaba.fastjson.JSON;
 import com.example.aop.annotations.ParamCheck;
 import com.example.aop.exception.ParamIsNullException;
 import org.aspectj.lang.JoinPoint;
@@ -9,7 +10,10 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
@@ -22,7 +26,8 @@ import java.lang.reflect.Method;
 @Component
 @Aspect
 public class ParamCheckAop {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
+    private final Logger logger = LoggerFactory.getLogger("CtrollerLog");
+    private HttpServletRequest request;
 
     /**
        * 定义一个切入点，范围为Controller包下的类
@@ -41,7 +46,15 @@ public class ParamCheckAop {
     public void checkParam(){}
 
     @Before("checkParam()")
-    public void doBefore(JoinPoint joinPoint){}
+    public void doBefore(JoinPoint joinPoint){
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        request = attributes.getRequest();
+        System.out.println(request.getRequestURI());
+        System.out.println(request.getMethod());
+        System.out.println(request.getContextPath());
+        System.out.println(request.getParameterMap().toString());
+        logger.error("request info,  url: " + request.getRequestURI() + ",  param: " + JSON.toJSONString(request.getParameterMap()));
+    }
 
     /**
      * 检查参数是否为空

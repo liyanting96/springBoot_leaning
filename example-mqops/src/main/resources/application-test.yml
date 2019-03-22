@@ -1,0 +1,39 @@
+spring:
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.99.236.94:3306/springBoot?useUnicode=true&characterEncoding=utf-8
+    username: itoffice
+    password: itoffice
+    hikari:
+      max-lifetime: 30000
+  redis:
+    host: 47.99.236.94
+    port: 6379
+    database: 1
+    timeout: 60s
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 8
+# https://blog.csdn.net/Jae_Wang/article/details/80728859
+mq-config:
+  API_ADDR: ${API_ADDR:http://192.168.0.48:5200}
+  HOST-GROUP-ID: 8
+  max_modify_count_per_day: 100
+  file: F:\\springboot3\\log\\demo2.log
+  SERVICE_NAME: "rocketmq.sunlands_mq.broker"
+  OWNER: user1
+  PREFIX: DEV_
+  HEADERS: {cookie: SESSION=c091c15f-6031-4f08-91ec-ece27bc82654}
+
+
+logging:
+  file: F:\\springboot3\\log\\demo2.log

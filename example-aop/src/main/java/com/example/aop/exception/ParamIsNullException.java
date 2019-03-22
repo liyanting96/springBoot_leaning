@@ -17,6 +17,7 @@ public class ParamIsNullException extends RuntimeException{
         return this.parameterName;
     }
 
+
 //    public RespEntity ParamIsNull(){
 //        return RespEntity.error(RespCode.PARAM_ERROR.getCode(), "参数错误");
 //    }

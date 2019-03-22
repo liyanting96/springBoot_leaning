@@ -1,6 +1,6 @@
 package com.example.jpa.Controller;
 
-import com.example.jpa.entity.Student;
+import com.example.jpa.Entity.Student;
 import com.example.jpa.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 
@@ -30,6 +31,12 @@ public class StudentController {
         return student;
 
     }
+    @RequestMapping(value = "/queryStudentById", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Map<String, Object>> queryStudent(Integer id){
+       return studentService.queryStudent();
+
+    }
 
     @RequestMapping(value = "/getStudentByNameWithJson", method = RequestMethod.POST)
     @ResponseBody
@@ -46,8 +53,7 @@ public class StudentController {
     }
     @RequestMapping(value = "/getStudentByName", method = RequestMethod.POST)
     @ResponseBody
-    public Student getStudentByName(HttpServletRequest httpServletRequest, String name){
-        System.out.println(httpServletRequest.getRequestURI() + "param: " + httpServletRequest.getQueryString());
+    public Student getStudentByName(String name){
         Student student = studentService.getStudentByName(name);
         if(student == null) {
             throw new RuntimeException("查询错误");
